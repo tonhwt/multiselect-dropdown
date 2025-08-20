@@ -143,6 +143,8 @@ class DropdownDecoration {
 class FieldDecoration {
   /// Creates a new instance of [FieldDecoration].
   ///
+  /// [label] is the label to display above the dropdown field.
+  ///
   /// [labelText] is the label text to display above the dropdown field.
   ///
   /// [hintText] is the hint text to display in the dropdown field. The default value is 'Select'.
@@ -175,6 +177,7 @@ class FieldDecoration {
   ///
   /// [backgroundColor] is the background color of the dropdown field.
   const FieldDecoration({
+    this.label,
     this.labelText,
     this.hintText = 'Select',
     this.border,
@@ -191,6 +194,9 @@ class FieldDecoration {
     this.backgroundColor,
     this.showClearIcon = true,
   });
+
+  /// The label to display above the dropdown field.
+  final Widget? label;
 
   /// The label text to display above the dropdown field.
   final String? labelText;

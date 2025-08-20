@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
@@ -67,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       DropdownItem(label: 'UK', value: User(name: 'UK', id: 5)),
       DropdownItem(label: 'Germany', value: User(name: 'Germany', id: 7)),
       DropdownItem(label: 'France', value: User(name: 'France', id: 8)),
+      DropdownItem(label: 'Thailand', value: User(name: 'Thailand', id: 9)),
     ];
     return Scaffold(
         backgroundColor: Colors.white,
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           runSpacing: 2,
                           spacing: 10,
                         ),
-                        fieldDecoration: FieldDecoration(
+                        /* fieldDecoration: FieldDecoration(
                           hintText: 'Countries',
                           hintStyle: const TextStyle(color: Colors.black87),
                           prefixIcon: const Icon(CupertinoIcons.flag),
@@ -113,7 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Colors.black87,
                             ),
                           ),
-                        ),
+                        ), */
+                        fieldDecoration: _buildFieldDecoration(false),
                         dropdownDecoration: const DropdownDecoration(
                           marginTop: 2,
                           maxHeight: 500,
@@ -211,5 +212,70 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ));
+  }
+
+  FieldDecoration _buildFieldDecoration(bool isInValid) {
+    return FieldDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      label: RichText(
+        text: const TextSpan(
+          text: 'Countries',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: Colors.black,
+            height: 1.5,
+          ),
+          children: [
+            TextSpan(
+              text: " *",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Colors.red,
+                height: 1.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+      labelStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: Colors.black,
+        height: 1.5,
+      ),
+      hintText: 'Countries',
+      hintStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: Colors.grey,
+        height: 1.5,
+      ),
+      showClearIcon: false,
+      animateSuffixIcon: true,
+      suffixIcon: const Icon(Icons.expand_more, color: Colors.black),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: isInValid ? Colors.red : Colors.grey,
+          width: 1,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: isInValid ? Colors.red : Colors.green,
+          width: 1,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: Colors.red, width: 1),
+      ),
+      backgroundColor: isInValid
+          ? Colors.red.shade100 // Light red background for error state
+          : Colors.white,
+    );
   }
 }
