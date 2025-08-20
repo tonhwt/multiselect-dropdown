@@ -109,15 +109,16 @@ class _Dropdown<T> extends StatelessWidget {
                   itemBuilder: (_, int index) => _buildOption(index, theme),
                 ),
               ),
-              if (items.isEmpty && searchEnabled)
-                Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    'No items found',
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                ),
+              if (items.isEmpty)
+                decoration.emptyItemsBody ??
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        'No items found',
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                    ),
               if (decoration.footer != null)
                 Flexible(child: decoration.footer!),
             ],

@@ -129,6 +129,17 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                           ),
+                          emptyItemsBody: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Text(
+                              'ไม่พบข้อมูล',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
                         ),
                         dropdownItemDecoration: DropdownItemDecoration(
                           selectedIcon:
